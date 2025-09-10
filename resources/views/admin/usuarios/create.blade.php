@@ -1,0 +1,326 @@
+@extends('adminlte::page')
+
+@section('content_header')
+
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Registro de un Nuevo Usuario</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/admin/usuarios') }}">Listado de Usuarios</a></li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+
+@stop
+
+@section('content')
+
+    <form action="{{ url('/admin/usuarios/create') }}" method="POST">
+        @csrf
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title"><b>Llene los Campos del Formulario </b></h3>
+                        <!-- /.card-tools -->
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="rol">Roles</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user-check"></i></span>
+                                        </div>
+                                        <select name="rol" class="form-control" id="">
+                                            <option value="">Seleccione un Rol</option>
+                                            @foreach ($roles as $role)
+                                                @if (!($role->name == 'SUPER-ADMIN'))
+                                                    <option value="{{ $role->name }}"
+                                                        {{ old('rol') == $role->name ? 'selected' : '' }}>
+                                                        {{ $role->name }}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                    @error('rol')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="nombres">Nombres</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" value="{{ old('nombres') }}"
+                                            name="nombres" placeholder="Ingrese el nombre del usuario" required>
+                                    </div>
+                                    @error('nombres')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="apellidos">Apellidos</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" value="{{ old('apellidos') }}"
+                                            name="apellidos" placeholder="Ingrese el apellido del usuario" required>
+                                    </div>
+                                    @error('apellidos')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="email">Correo Electronico</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        </div>
+                                        <input type="email" class="form-control" value="{{ old('email') }}"
+                                            name="email" placeholder="Ingrese el Correo Electronico" required>
+                                    </div>
+                                    @error('email')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="tipo_documento">Tipo de Documento</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                        </div>
+                                        <select name="tipo_documento" class="form-control" id="tipo_documento" required>
+                                            <option value="">Seleccione un Tipo de Documento</option>
+                                            <option value="DNI" {{ old('tipo_documento') == 'DNI' ? 'selected' : '' }}>
+                                                DNI</option>
+                                            <option value="CARNET DE EXTRANJERIA"
+                                                {{ old('tipo_documento') == 'CARNET DE EXTRANJERIA' ? 'selected' : '' }}>
+                                                CARNET DE EXTRANJERIA</option>
+                                            <option value="PASAPORTE"
+                                                {{ old('tipo_documento') == 'PASAPORTE' ? 'selected' : '' }}>PASAPORTE
+                                            </option>
+                                            <option value="RUC" {{ old('tipo_documento') == 'RUC' ? 'selected' : '' }}>
+                                                RUC</option>
+                                            <option value="CI" {{ old('tipo_documento') == 'CI' ? 'selected' : '' }}>CI
+                                            </option>
+                                        </select>
+                                    </div>
+                                    @error('tipo_documento')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="numero_documento">Numero de Documento</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" value="{{ old('numero_documento') }}"
+                                            name="numero_documento" id="numero_documento"
+                                            placeholder="Ingrese el Numero de Documento" required>
+                                    </div>
+                                    @error('numero_documento')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="celular">Celular</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" value="{{ old('celular') }}"
+                                            name="celular" id="celular" placeholder="Ingrese el Celular" required>
+                                    </div>
+                                    @error('celular')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="fecha_nacimiento">Fecha de Nacimiento</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                        </div>
+                                        <input type="date" class="form-control" value="{{ old('fecha_nacimiento') }}"
+                                            name="fecha_nacimiento" id="fecha_nacimiento"
+                                            placeholder="Ingrese la Fecha de Nacimiento" required>
+                                    </div>
+                                    @error('fecha_nacimiento')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="genero">Género</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+                                        </div>
+                                        <select name="genero" id="genero" class="form-control" required>
+                                            <option value="">Seleccione el Género</option>
+                                            <option value="Masculino"
+                                                {{ old('genero') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                                            <option value="Femenino" {{ old('genero') == 'Femenino' ? 'selected' : '' }}>
+                                                Femenino</option>
+                                            <option value="Otro" {{ old('genero') == 'Otro' ? 'selected' : '' }}>Otro
+                                            </option>
+                                        </select>
+                                    </div>
+                                    @error('genero')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <label for="direccion">Dirección</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" value="{{ old('direccion') }}"
+                                            name="direccion" id="direccion" placeholder="Ingrese la Dirección" required>
+                                    </div>
+                                    @error('direccion')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title"><b>Contactos de Emergencia</b></h3>
+                        <!-- /.card-tools -->
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="contacto_nombre">Nombre del Contacto de Emergencia</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user-shield"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" value="{{ old('contacto_nombre') }}"
+                                            name="contacto_nombre" id="contacto_nombre"
+                                            placeholder="Ingrese el Nombre del Contacto de Emergencia" required>
+                                    </div>
+                                    @error('contacto_nombre')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="contacto_telefono">Telefono del Contacto de Emergencia</label><b> (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                            value="{{ old('contacto_telefono') }}" name="contacto_telefono"
+                                            id="contacto_telefono"
+                                            placeholder="Ingrese el Telefono del Contacto de Emergencia" required>
+                                    </div>
+                                    @error('contacto_telefono')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="contacto_parentesco">Parentesco del Contacto de Emergencia</label><b>
+                                        (*)</b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user-friends"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                            value="{{ old('contacto_parentesco') }}" name="contacto_parentesco"
+                                            id="contacto_parentesco"
+                                            placeholder="Ingrese el Parentesco del Contacto de Emergencia" required>
+                                    </div>
+                                    @error('contacto_parentesco')
+                                        <small style="color: red;">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="{{ url('/admin/usuarios') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
+                    Regresar</a>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+        </div>
+
+    </form>
+@stop
+
+@section('css')
+    {{-- Add here extra stylesheets --}}
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+@stop
+
+@section('js')
+    <script>
+        console.log("Hi, I'm using the Laravel-AdminLTE package!");
+    </script>
+@stop

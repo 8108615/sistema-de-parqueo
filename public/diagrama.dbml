@@ -13,3 +13,36 @@ Table ajustes {
   created_at timestamp
   updated_at timestamp
 }
+
+Table roles {
+  id int [pk, increment]
+  name varchar
+  guard_name varchar
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table usuarios {
+  id int [pk, increment]
+  name varchar
+  email varchar
+  password varchar
+  remember_token varchar
+  
+  nombres varchar
+  apellidos varchar
+  tipo_documento varchar
+  nro_documento varchar
+  celular varchar
+  fecha_nacimiento date
+  genero varchar
+  direccion varchar
+  foto varchar
+  contacto_nombre varchar
+  contacto_telefono varchar
+  contacto_parentesco varchar
+
+
+  created_at timestamp
+  updated_at timestamp
+}
