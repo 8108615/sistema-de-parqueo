@@ -69,39 +69,75 @@
                                                 </td>
 
                                                 <td class="d-flex justify-content-center">
-                                                    <a href="{{ url('/admin/usuario/' . $usuario->id) }}" class="btn btn-info btn-sm"><i
+
+                                                    @if (!($usuario->deleted_at))
+                                                        <a href="{{ url('/admin/usuario/' . $usuario->id) }}" class="btn btn-info btn-sm"><i
                                                             class="fas fa-eye"></i> Ver</a>
-                                                    <a href="{{ url('/admin/usuario/' . $usuario->id . '/edit') }}"
-                                                        class="btn btn-success btn-sm"><i class="fas fa-edit"></i>
-                                                        Editar</a>
-                                                    <form action="{{ url('/admin/usuario/' . $usuario->id) }}"
-                                                        id="miformulario{{ $usuario->id }}" method="POST"
-                                                        class="d-inline">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger"
-                                                            onclick="preguntar{{ $usuario->id }}(event)">
-                                                            <i class="fas fa-trash-alt"></i> Eliminar</button>
-                                                    </form>
-                                                    <script>
-                                                        function preguntar{{ $usuario->id }}(event) {
-                                                            event.preventDefault();
-                                                            Swal.fire({
-                                                                title: "¿Desea Eiminar este Registro?",
-                                                                text: "",
-                                                                icon: "question",
-                                                                showCancelButton: true,
-                                                                confirmButtonColor: "#3085d6",
-                                                                cancelButtonColor: "#d33",
-                                                                confirmButtonText: "Si, Eliminar",
-                                                                denyButtonText: "No, Cancelar"
-                                                            }).then((result) => {
-                                                                if (result.isConfirmed) {
-                                                                    document.getElementById('miformulario{{ $usuario->id }}').submit();
-                                                                }
-                                                            });
-                                                        }
-                                                    </script>
+                                                        <a href="{{ url('/admin/usuario/' . $usuario->id . '/edit') }}"
+                                                            class="btn btn-success btn-sm"><i class="fas fa-edit"></i>
+                                                            Editar</a>
+                                                        <form action="{{ url('/admin/usuario/' . $usuario->id) }}"
+                                                            id="miformulario{{ $usuario->id }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="preguntar{{ $usuario->id }}(event)">
+                                                                <i class="fas fa-trash"></i> Eliminar
+                                                            </button>
+                                                        </form>
+                                                        <script>
+                                                            function preguntar{{ $usuario->id }}(event) {
+                                                                event.preventDefault();
+                                                                Swal.fire({
+                                                                    title: "¿Desea Eiminar este Registro?",
+                                                                    text: "",
+                                                                    icon: "question",
+                                                                    showDenyButton: true,
+                                                                    confirmButtonText: "Eliminar",
+                                                                    confirmButtonColor: "#a5161d",
+                                                                    denyButtonColor: "#270a0a",
+                                                                    denyButtonText: "Cancelar",
+                                                                }).then((result) => {
+                                                                    if (result.isConfirmed) {
+                                                                        document.getElementById('miformulario{{ $usuario->id }}').submit();
+                                                                    }
+                                                                });
+                                                            }
+                                                        </script>
+                                                    @else
+                                                        <form action="{{ url('/admin/usuario/' . $usuario->id.'/restaurar') }}"
+                                                            id="miformulario{{ $usuario->id }}" method="POST">
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-warning btn-sm"
+                                                                onclick="preguntar{{ $usuario->id }}(event)">
+                                                                <i class="fas fa-save"></i> Restaurar Usuario
+                                                            </button>
+                                                        </form>
+                                                        <script>
+                                                            function preguntar{{ $usuario->id }}(event) {
+                                                                event.preventDefault();
+                                                                Swal.fire({
+                                                                    title: "¿Desea Restaurar este Usuario?",
+                                                                    text: "",
+                                                                    icon: "question",
+                                                                    showDenyButton: true,
+                                                                    confirmButtonText: "Restaurar",
+                                                                    confirmButtonColor: "#a5161d",
+                                                                    denyButtonColor: "#270a0a",
+                                                                    denyButtonText: "Cancelar",
+                                                                }).then((result) => {
+                                                                    if (result.isConfirmed) {
+                                                                        document.getElementById('miformulario{{ $usuario->id }}').submit();
+                                                                    }
+                                                                });
+                                                            }
+                                                        </script>
+
+                                                    @endif
+
+
+                                                    
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach

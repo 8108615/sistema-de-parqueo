@@ -19,6 +19,13 @@
         @yield('title_postfix', config('adminlte.title_postfix', ''))
     </title>
 
+    <style>
+        .main-sidebar .nav-sidebar .nav-link.active {
+            background-color: #ffffff !important;
+            color: #2269ee !important;
+        }
+    </style>
+
     {{-- Custom stylesheets (pre AdminLTE) --}}
     @yield('adminlte_css_pre')
 

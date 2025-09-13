@@ -21,7 +21,7 @@
 
 @section('content')
 
-    <form action="{{ url('/admin/usuarios/' . $usuario->id) }}" method="POST">
+    <form action="{{ url('/admin/usuario/' . $usuario->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="row">
