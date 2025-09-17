@@ -61,3 +61,48 @@ Table tarifas {
   created_at timestamp
   updated_at timestamp
 }
+Table clientes {
+  id int [pk, increment]
+  nombres varchar
+  numero_documento string
+  email string
+  celular string
+  genero string
+  estado boolean
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table vehiculos {
+  id int [pk, increment]
+  cliente_id int [ref: > clientes.id]
+  placa string
+  marca string
+  modelo string
+  color string
+  tipo string
+  created_at timestamp
+  updated_at timestamp
+}
+Table tickets {
+  id int [pk, increment]
+
+  espacio_id int [ref: > espacios.id]
+  cliente_id int [ref: > clientes.id]
+  vehiculo_id int [ref: > vehiculos.id]
+  tarifa_id int [ref: > tarifas.id]
+  usuario_id int [ref: > usuarios.id]
+
+  codigo_ticket string
+  fecha_ingreso date
+  hora_ingreso timestamp
+  fecha_salida date
+  hora_salida timestamp
+  tiempo_total string
+  monto_total decimal
+  estado_ticket string
+  obs string
+
+  created_at timestamp
+  updated_at timestamp
+}

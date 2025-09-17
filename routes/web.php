@@ -49,3 +49,27 @@ Route::post('/admin/tarifas/create', [App\Http\Controllers\TarifaController::cla
 Route::get('/admin/tarifa/{id}/edit', [App\Http\Controllers\TarifaController::class, 'edit'])->name('admin.tarifas.edit')->middleware('auth');
 Route::put('/admin/tarifa/{id}', [App\Http\Controllers\TarifaController::class, 'update'])->name('admin.tarifas.update')->middleware('auth');
 Route::delete('/admin/tarifa/{id}', [App\Http\Controllers\TarifaController::class, 'destroy'])->name('admin.tarifas.destroy')->middleware('auth');
+
+//Rutas para clientes
+Route::get('/admin/clientes', [App\Http\Controllers\ClienteController::class, 'index'])->name('admin.clientes.index')->middleware('auth');
+Route::get('/admin/clientes/create', [App\Http\Controllers\ClienteController::class, 'create'])->name('admin.clientes.create')->middleware('auth');
+Route::post('/admin/clientes/create', [App\Http\Controllers\ClienteController::class, 'store'])->name('admin.clientes.store')->middleware('auth');
+Route::post('/admin/cliente/{id}/restaurar', [App\Http\Controllers\ClienteController::class, 'restore'])->name('admin.clientes.restore')->middleware('auth');
+Route::get('/admin/cliente/{id}', [App\Http\Controllers\ClienteController::class, 'show'])->name('admin.clientes.show')->middleware('auth');
+Route::get('/admin/cliente/{id}/edit', [App\Http\Controllers\ClienteController::class, 'edit'])->name('admin.clientes.edit')->middleware('auth');
+Route::put('/admin/cliente/{id}', [App\Http\Controllers\ClienteController::class, 'update'])->name('admin.clientes.update')->middleware('auth');
+Route::delete('/admin/cliente/{id}', [App\Http\Controllers\ClienteController::class, 'destroy'])->name('admin.clientes.destroy')->middleware('auth');
+
+//Rutas para clientes vehiculos
+Route::post('/admin/clientes/vehiculos/create', [App\Http\Controllers\VehiculoController::class, 'store'])->name('admin.clientes.vehiculos.store')->middleware('auth');
+Route::put('/admin/clientes/vehiculo/{id}', [App\Http\Controllers\VehiculoController::class, 'update'])->name('admin.clientes.vehiculos.update')->middleware('auth');
+Route::delete('/admin/clientes/vehiculo/{id}', [App\Http\Controllers\VehiculoController::class, 'destroy'])->name('admin.clientes.vehiculos.destroy')->middleware('auth');
+
+//Rutas para tickets
+Route::get('/admin/tickets', [App\Http\Controllers\TicketController::class, 'index'])->name('admin.tickets.index')->middleware('auth');
+Route::get('/admin/tickets/vehiculo/{id}', [App\Http\Controllers\TicketController::class, 'buscar_vehiculo'])->name('admin.tickets.buscar_vehiculo')->middleware('auth');
+Route::get('/admin/tickets/create', [App\Http\Controllers\TicketController::class, 'create'])->name('admin.tickets.create')->middleware('auth');
+Route::post('/admin/tickets/create', [App\Http\Controllers\TicketController::class, 'store'])->name('admin.tickets.store')->middleware('auth');
+Route::get('/admin/ticket/{id}/edit', [App\Http\Controllers\TicketController::class, 'edit'])->name('admin.tickets.edit')->middleware('auth');
+Route::put('/admin/ticket/{id}', [App\Http\Controllers\TicketController::class, 'update'])->name('admin.tickets.update')->middleware('auth');
+Route::delete('/admin/ticket/{id}', [App\Http\Controllers\TicketController::class, 'destroy'])->name('admin.tickets.destroy')->middleware('auth');

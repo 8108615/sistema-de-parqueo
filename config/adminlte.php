@@ -343,6 +343,20 @@ return [
             'classes' => 'bg-blue text-white',
             'active' => ['admin/tarifa*'],
         ],
+        [
+            'text' => 'Clientes',
+            'url' => 'admin/clientes',
+            'icon' => 'fas fa-fw fa-users',
+            'classes' => 'bg-blue text-white',
+            'active' => ['admin/cliente*'],
+        ],
+        [
+            'text' => 'Tickets',
+            'url' => 'admin/tickets',
+            'icon' => 'fas fa-fw fa-ticket-alt',
+            'classes' => 'bg-blue text-white',
+            'active' => ['admin/ticket*'],
+        ],
 
         ['header' => 'Ajustes del Sistema'],
         [
@@ -457,7 +471,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
