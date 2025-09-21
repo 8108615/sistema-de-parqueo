@@ -68,8 +68,8 @@ Route::delete('/admin/clientes/vehiculo/{id}', [App\Http\Controllers\VehiculoCon
 //Rutas para tickets
 Route::get('/admin/tickets', [App\Http\Controllers\TicketController::class, 'index'])->name('admin.tickets.index')->middleware('auth');
 Route::get('/admin/tickets/vehiculo/{id}', [App\Http\Controllers\TicketController::class, 'buscar_vehiculo'])->name('admin.tickets.buscar_vehiculo')->middleware('auth');
-Route::get('/admin/tickets/create', [App\Http\Controllers\TicketController::class, 'create'])->name('admin.tickets.create')->middleware('auth');
 Route::post('/admin/tickets/create', [App\Http\Controllers\TicketController::class, 'store'])->name('admin.tickets.store')->middleware('auth');
-Route::get('/admin/ticket/{id}/edit', [App\Http\Controllers\TicketController::class, 'edit'])->name('admin.tickets.edit')->middleware('auth');
-Route::put('/admin/ticket/{id}', [App\Http\Controllers\TicketController::class, 'update'])->name('admin.tickets.update')->middleware('auth');
+Route::get('/admin/ticket/{id}/imprimir', [App\Http\Controllers\TicketController::class, 'imprimir_ticket'])->name('admin.tickets.imprimir_ticket')->middleware('auth');
+Route::get('/admin/ticket/{id}/imprimir_factura', [App\Http\Controllers\TicketController::class, 'imprimir_factura'])->name('admin.tickets.imprimir_factura')->middleware('auth');
+Route::get('/admin/ticket/{id}/finalizar_ticket', [App\Http\Controllers\TicketController::class, 'finalizar_ticket'])->name('admin.tickets.finalizar_ticket')->middleware('auth');
 Route::delete('/admin/ticket/{id}', [App\Http\Controllers\TicketController::class, 'destroy'])->name('admin.tickets.destroy')->middleware('auth');

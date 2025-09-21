@@ -174,13 +174,13 @@ class DatabaseSeeder extends Seeder
         Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_hora', 'cantidad' => '23', 'costo' => '115', 'minutos_de_gracia' => '30']);
 
         //Tarifas por dia
-        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '1', 'costo' => '50', 'minutos_de_gracia' => '60']);
-        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '2', 'costo' => '100', 'minutos_de_gracia' => '60']);
-        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '3', 'costo' => '150', 'minutos_de_gracia' => '60']);
-        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '4', 'costo' => '200', 'minutos_de_gracia' => '60']);
-        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '5', 'costo' => '250', 'minutos_de_gracia' => '60']);
-        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '6', 'costo' => '300', 'minutos_de_gracia' => '60']);
-        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '7', 'costo' => '350', 'minutos_de_gracia' => '60']);
+        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '1', 'costo' => '50', 'minutos_de_gracia' => '720']);
+        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '2', 'costo' => '100', 'minutos_de_gracia' => '720']);
+        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '3', 'costo' => '150', 'minutos_de_gracia' => '720']);
+        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '4', 'costo' => '200', 'minutos_de_gracia' => '720']);
+        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '5', 'costo' => '250', 'minutos_de_gracia' => '720']);
+        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '6', 'costo' => '300', 'minutos_de_gracia' => '720']);
+        Tarifa::create(['nombre' => 'regular', 'tipo' => 'por_dia', 'cantidad' => '7', 'costo' => '350', 'minutos_de_gracia' => '720']);
 
         //cliente 1 y su vehiculo
         $cliente1 = Cliente::create([
