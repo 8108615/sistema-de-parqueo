@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('facturacions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ticket_id')->constrained('tickets')->onDelete('cascade');
-            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('ticket_id')->constrained('tickets');
+            $table->foreignId('usuario_id')->constrained('users');
             $table->integer('nro_factura')->unique();
             $table->string('nombre_cliente');
             $table->string('nro_documento');

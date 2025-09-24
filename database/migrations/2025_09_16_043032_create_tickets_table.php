@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('espacio_id')->constrained('espacios')->onDelete('cascade');
-            $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade');
-            $table->foreignId('vehiculo_id')->constrained('vehiculos')->onDelete('cascade');
-            $table->foreignId('tarifa_id')->constrained('tarifas')->onDelete('cascade');
-            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('espacio_id')->constrained('espacios');
+            $table->foreignId('cliente_id')->constrained('clientes');
+            $table->foreignId('vehiculo_id')->constrained('vehiculos');
+            $table->foreignId('tarifa_id')->constrained('tarifas');
+            $table->foreignId('usuario_id')->constrained('users');
             $table->string('codigo_ticket')->unique();
             $table->date('fecha_ingreso');
             $table->time('hora_ingreso');

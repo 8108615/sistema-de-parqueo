@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ajuste;
 use App\Models\Espacio;
+use App\Models\Facturacion;
 use App\Models\Tarifa;
 use App\Models\Ticket;
 use App\Models\Vehiculo;
@@ -74,7 +75,6 @@ class TicketController extends Controller
         $ticket->usuario_id = Auth::user()->id;
 
         //generar codigo del ticket
-
         $ultimo_ticket = DB::table('tickets')->max('id');
         $siguiente_ticket = $ultimo_ticket ? $ultimo_ticket + 1 : 1;
         $codigo_ticket = 'TK-'.$siguiente_ticket;
@@ -238,10 +238,28 @@ class TicketController extends Controller
         $ticket->estado_ticket = 'completado';
         $ticket->save();
 
+        //registrar la factura
+        $factura = new Facturacion();
+        $factura->ticket_id = $ticket->id;
+        $factura->usuario_id = Auth::user()->id;
+
+        //numero de factura
+        $ultima_factura = DB::table('facturacions')->max('id');
+        $siguiente_factura = $ultima_factura ? $ultima_factura + 1 : 1;
+        $nro_factura = $siguiente_factura;
+
+        $factura->nro_factura = $nro_factura;
+        $factura->nombre_cliente = $ticket->cliente->nombres;
+        $factura->nro_documento = $ticket->cliente->numero_documento;
+        $factura->placa = $ticket->vehiculo->placa;
+        $factura->detalle = "Servicio de parqueo de".$tiempo_total;
+        $factura->monto = $monto_total;
+        $factura->save();
+
         return redirect()->route('admin.tickets.index')
             ->with('mensaje', 'Ticket Facturado Correctamente.')
             ->with('icono', 'success')
-            ->with('ticket_id', $ticket->id);
+            ->with('factura_id', $factura->id);
 
     }
 

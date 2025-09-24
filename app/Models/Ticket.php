@@ -48,4 +48,8 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function facturacion()
+    {
+        return $this->hasOne(Facturacion::class);
+    }
 }

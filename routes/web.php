@@ -61,6 +61,7 @@ Route::put('/admin/cliente/{id}', [App\Http\Controllers\ClienteController::class
 Route::delete('/admin/cliente/{id}', [App\Http\Controllers\ClienteController::class, 'destroy'])->name('admin.clientes.destroy')->middleware('auth');
 
 //Rutas para clientes vehiculos
+Route::get('/admin/vehiculos', [App\Http\Controllers\VehiculoController::class, 'index'])->name('admin.vehiculos.index')->middleware('auth');
 Route::post('/admin/clientes/vehiculos/create', [App\Http\Controllers\VehiculoController::class, 'store'])->name('admin.clientes.vehiculos.store')->middleware('auth');
 Route::put('/admin/clientes/vehiculo/{id}', [App\Http\Controllers\VehiculoController::class, 'update'])->name('admin.clientes.vehiculos.update')->middleware('auth');
 Route::delete('/admin/clientes/vehiculo/{id}', [App\Http\Controllers\VehiculoController::class, 'destroy'])->name('admin.clientes.vehiculos.destroy')->middleware('auth');
@@ -70,6 +71,10 @@ Route::get('/admin/tickets', [App\Http\Controllers\TicketController::class, 'ind
 Route::get('/admin/tickets/vehiculo/{id}', [App\Http\Controllers\TicketController::class, 'buscar_vehiculo'])->name('admin.tickets.buscar_vehiculo')->middleware('auth');
 Route::post('/admin/tickets/create', [App\Http\Controllers\TicketController::class, 'store'])->name('admin.tickets.store')->middleware('auth');
 Route::get('/admin/ticket/{id}/imprimir', [App\Http\Controllers\TicketController::class, 'imprimir_ticket'])->name('admin.tickets.imprimir_ticket')->middleware('auth');
-Route::get('/admin/ticket/{id}/imprimir_factura', [App\Http\Controllers\TicketController::class, 'imprimir_factura'])->name('admin.tickets.imprimir_factura')->middleware('auth');
 Route::get('/admin/ticket/{id}/finalizar_ticket', [App\Http\Controllers\TicketController::class, 'finalizar_ticket'])->name('admin.tickets.finalizar_ticket')->middleware('auth');
 Route::delete('/admin/ticket/{id}', [App\Http\Controllers\TicketController::class, 'destroy'])->name('admin.tickets.destroy')->middleware('auth');
+
+//Rutas para facturacion
+Route::get('/admin/factura/{id}', [App\Http\Controllers\FacturacionController::class, 'imprimir_factura'])->name('admin.facturacion.imprimir_factura')->middleware('auth');
+
+//Rutas vehiculos
