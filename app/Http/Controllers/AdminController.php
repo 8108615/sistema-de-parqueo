@@ -80,8 +80,12 @@ class AdminController extends Controller
             $ingresos_data[$mes] = $data['total'];
         }
 
+        //calculo para el pastel de seguimiento
+        $espacios = Espacio::all();
+        $tickets_activos = Ticket::where('estado_ticket', 'activo')->get();
+
         return view('admin.index', compact('ajuste','total_roles', 'total_usuarios', 'total_espacios', 'total_espacios_libres', 'total_espacios_ocupados',
         'total_espacios_mantenimiento', 'total_tarifas', 'total_clientes', 'total_vehiculos', 'total_tickets_activos','ingreso_hoy','ingreso_ayer','ingreso_esta_semana',
-        'ingreso_semana_anterior','ingreso_este_mes','ingreso_mes_anterior','ingreso_total','ingresos_mensuales','ingresos_data'));
+        'ingreso_semana_anterior','ingreso_este_mes','ingreso_mes_anterior','ingreso_total','ingresos_mensuales','ingresos_data','espacios','tickets_activos'));
     }
 }

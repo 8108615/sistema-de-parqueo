@@ -25,7 +25,10 @@ class TicketController extends Controller
         $ajuste = Ajuste::first();
         $espacios = Espacio::all();
         $vehiculos = Vehiculo::with('cliente')->get();
-        $tarifas = Tarifa::all();
+        //$tarifas = Tarifa::all();
+        $tarifas_ids = DB::table('tarifas')->select(DB::raw('MIN(id) as id'))
+        ->groupBy('nombre','tipo')->pluck('id');
+        $tarifas = Tarifa::whereIn('id',$tarifas_ids)->get();
         $tickets_activos = Ticket::where('estado_ticket', 'activo')->get();
         return view('admin.tickets.index', compact('espacios', 'ajuste', 'vehiculos','tarifas', 'tickets_activos'));
     }
@@ -94,6 +97,9 @@ class TicketController extends Controller
             ->with('mensaje', 'Ticket Creado Correctamente.')
             ->with('icono', 'success')
             ->with('ticket_id', $ticket->id);
+    }
+
+    public function actualizar_tarifa(Request $request){
     }
 
     public function imprimir_ticket($id)
