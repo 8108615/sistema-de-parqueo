@@ -94,7 +94,7 @@
         </p>
     @endif
 
-    {{-- Register link --}}
+    {{-- Register link 
     @if($registerUrl)
         <p class="my-0">
             <a href="{{ $registerUrl }}">
@@ -102,4 +102,5 @@
             </a>
         </p>
     @endif
+    --}}
 @stop

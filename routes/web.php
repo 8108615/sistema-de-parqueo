@@ -7,6 +7,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/register', function(){
+    abort(403,'Registro no Permitido');
+})->name('register');
 
 Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index.home')->middleware('auth');
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index')->middleware('auth');
@@ -73,6 +76,7 @@ Route::post('/admin/tickets/create', [App\Http\Controllers\TicketController::cla
 Route::get('/admin/ticket/{id}/imprimir', [App\Http\Controllers\TicketController::class, 'imprimir_ticket'])->name('admin.tickets.imprimir_ticket')->middleware('auth');
 Route::post('/admin/ticket/actualizar_tarifa', [App\Http\Controllers\TicketController::class, 'actualizar_tarifa'])->name('admin.tickets.actualizar_tarifa')->middleware('auth');
 Route::get('/admin/ticket/{id}/finalizar_ticket', [App\Http\Controllers\TicketController::class, 'finalizar_ticket'])->name('admin.tickets.finalizar_ticket')->middleware('auth');
+Route::get('/admin/ticket/{id}/calcular_monto', [App\Http\Controllers\TicketController::class, 'calcular_monto'])->name('admin.tickets.calcular_monto')->middleware('auth');
 Route::delete('/admin/ticket/{id}', [App\Http\Controllers\TicketController::class, 'destroy'])->name('admin.tickets.destroy')->middleware('auth');
 
 //Rutas para facturacion

@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         
         Ajuste::create([
-            'nombre'=>'Ajuste Sistema de Parqueo Erick',
+            'nombre'=>'Sistema de Parqueo Erick',
             'descripcion'=>'Sistema de Gestion de  Parqueo EFMG',
             'sucursal'=>'Santa Cruz',
             'direccion'=>'Av. Cumavi/Barrio San Juan Calle 5/Nro225',

@@ -80,6 +80,17 @@
             <b>Hora de Salida: </b> {{ $factura->ticket->hora_salida }} <br>
         </div>
 
+        <div class="line "></div>
+
+        <!-- Datos del Espacio -->
+
+        <div>
+            <strong>DATOS DE LA TARIFA: </strong><br>
+            <b>Nombre: </b> {{ $factura->ticket->tarifa->nombre }} <br>
+            <b>Tipo: </b> {{ $factura->ticket->tarifa->tipo }} <br>
+
+        </div>
+
 
         <div class="line"></div>
 

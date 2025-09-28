@@ -277,6 +277,15 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-12">
+                            <h2 style="color: #0921a8;font-size: 20pt;">
+                                <b>Costo Total a Pagar: <span id="costo_total_a_pagar"></span>
+                                <i class="fas fa-money-bill-wave"></i></b>
+                            </h2>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
                             <button class="btn btn-secondary" data-dismiss="modal"> Cerrar</button>
 
                             <form action="#" method="POST" id="form_cancel_ticket" style="display: inline;">
@@ -456,12 +465,32 @@
 
 
 
-            const botonCancelar = $('#btn_cancelar_ticket');
+            const modal = $('#modal_ocupado');
+            const botonCancelar = modal.find('#btn_cancelar_ticket');
+            const botonFacturar = modal.find('#btn_facturar');
+            const costoTotal = modal.find('#costo_total_a_pagar');
+
             if (diferenciaMinutos > 10) {
                 botonCancelar.prop('disabled', true);
+                botonFacturar.show();
+                costoTotal.show();
             } else {
                 botonCancelar.prop('disabled', false);
+                botonFacturar.hide();
+                costoTotal.hide();
             }
+
+            $.ajax({
+                url: "{{ url('/admin/ticket/') }}" + "/" + ticket_id + "/calcular_monto",
+                type: 'GET',
+                success: function(data) {
+                    $('#costo_total_a_pagar').html(data);
+                },error: function() {
+                    $('#costo_total_a_pagar').html('<p>Error al Cargar la Informacion');
+                }
+            });
+
+
             //$('#btn_imprimir_ticket').attr('href', urlImprimir);
             $('#modal_ocupado').modal('show');
         });
