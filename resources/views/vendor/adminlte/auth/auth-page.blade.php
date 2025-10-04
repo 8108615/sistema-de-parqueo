@@ -26,6 +26,9 @@
 
 @section('body')
     <div class="{{ $authType }}-box">
+        <center>
+            <img src="{{ url('/images/logoparqueo.gif') }}" width="60%" alt="">
+        </center>
 
         {{-- Logo --}}
         <div class="{{ $authType }}-logo">

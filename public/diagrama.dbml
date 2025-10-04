@@ -87,13 +87,11 @@ Table vehiculos {
 
 Table tickets {
   id int [pk, increment]
-
   espacio_id int [ref: > espacios.id]
   cliente_id int [ref: > clientes.id]
   vehiculo_id int [ref: > vehiculos.id]
   tarifa_id int [ref: > tarifas.id]
   usuario_id int [ref: > usuarios.id]
-
   codigo_ticket string
   fecha_ingreso date
   hora_ingreso timestamp
@@ -103,7 +101,6 @@ Table tickets {
   monto_total decimal
   estado_ticket string
   obs string
-
   created_at timestamp
   updated_at timestamp
 }

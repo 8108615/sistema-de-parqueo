@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ajuste;
 use App\Models\Tarifa;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class TarifaController extends Controller
@@ -102,6 +103,13 @@ class TarifaController extends Controller
     public function destroy($id)
     {
         $tarifa = Tarifa::find($id);
+
+        $tickets_asociados = Ticket::where('tarifa_id', $tarifa->id)->count();
+        if($tickets_asociados > 0){
+            return redirect()->route('admin.tarifas.index')
+            ->with('mensaje', 'No se puede Eliminar la Tarifa por que tiene '.$tickets_asociados.' tickets Asociados.')
+            ->with('icono','error');
+        }
         $tarifa->delete();
         return redirect()->route('admin.tarifas.index')
             ->with('mensaje', 'Tarifa Eliminada Correctamente.')

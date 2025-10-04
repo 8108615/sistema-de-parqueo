@@ -263,7 +263,7 @@ return [
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
-    'profile_url' => false,
+    'profile_url' => 'perfil',
     'disable_darkmode_routes' => false,
 
     /*
@@ -316,6 +316,7 @@ return [
             'classes' => 'bg-blue text-white',
         ],
         [
+            'can' => 'admin.roles.index',
             'text' => 'Roles',
             'url' => 'admin/roles',
             'icon' => 'fas fa-fw fa-user-shield',
@@ -323,6 +324,7 @@ return [
             'active' => ['admin/rol*'],
         ],
         [
+            'can' => 'admin.usuarios.index',
             'text' => 'Usuarios',
             'url' => 'admin/usuarios',
             'icon' => 'fas fa-fw fa-users',
@@ -330,6 +332,7 @@ return [
             'active' => ['admin/usuario*'],
         ],
         [
+            'can' => 'admin.espacios.index',
             'text' => 'Espacios',
             'url' => 'admin/espacios',
             'icon' => 'fas fa-fw fa-parking',
@@ -337,6 +340,7 @@ return [
             'active' => ['admin/espacio*'],
         ],
         [
+            'can' => 'admin.tarifas.index',
             'text' => 'Tarifas',
             'url' => 'admin/tarifas',
             'icon' => 'fas fa-fw fa-dollar-sign',
@@ -344,6 +348,7 @@ return [
             'active' => ['admin/tarifa*'],
         ],
         [
+            'can' => 'admin.clientes.index',
             'text' => 'Clientes',
             'url' => 'admin/clientes',
             'icon' => 'fas fa-fw fa-users',
@@ -351,6 +356,7 @@ return [
             'active' => ['admin/cliente*'],
         ],
         [
+            'can' => 'admin.tickets.index',
             'text' => 'Tickets',
             'url' => 'admin/tickets',
             'icon' => 'fas fa-fw fa-ticket-alt',
@@ -358,8 +364,19 @@ return [
             'active' => ['admin/ticket*'],
         ],
 
+        [
+            'can' => 'admin.reportes.index',
+            'text' => 'Reportes',
+            'url' => 'admin/reportes',
+            'icon' => 'fas fa-fw fa-chart-line',
+            'classes' => 'bg-blue text-white',
+            'active' => ['admin/reporte*'],
+        ],
+
+
         ['header' => 'Ajustes del Sistema'],
         [
+            'can' => 'admin.ajustes.index',
             'text' => 'Ajustes',
             'url' => 'admin/ajustes',
             'icon' => 'fas fa-fw fa-cog',

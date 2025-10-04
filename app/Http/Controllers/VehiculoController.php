@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use App\Models\Vehiculo;
 use Illuminate\Http\Request;
 
@@ -105,6 +106,14 @@ class VehiculoController extends Controller
     {
         $vehiculo = Vehiculo::find($id);
         $vehiculo->delete();
+
+        $tickets_asociados = Ticket::where('vehiculo_id', $vehiculo->id)->count();
+        if($tickets_asociados > 0){
+            return redirect()->back()
+            ->with('mensaje', 'No se puede Eliminar el Vehiculo por que tiene '.$tickets_asociados.' tickets Asociados.')
+            ->with('icono','error');
+        }
+
         return redirect()->back()
             ->with('mensaje', 'Vehículo Eliminado Correctamente.')
             ->with('icono', 'success');

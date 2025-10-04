@@ -26,252 +26,270 @@
             <div class="col-md-9">
                 <div class="row">
 
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="info-box zoomP">
-                            <span class="info-box-icon bg-info">
-                                <a href="{{ url('/admin/roles') }}">
-                                    <img src="{{ url('/images/roles.gif') }}" width="100%" alt="">
-                                </a>
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Roles Registrados</span>
-                                <span class="info-box-number">{{ $total_roles }} Roles</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="info-box zoomP">
-                            <span class="info-box-icon bg-info">
-                                <a href="{{ url('/admin/usuarios') }}">
-                                    <img src="{{ url('/images/usuario.gif') }}" width="100%" alt="">
-                                </a>
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Usuarios Registrados</span>
-                                <span class="info-box-number">{{ $total_usuarios }} Usuarios</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-
-                    <div class="col-md-6 col-sm-6 col-12">
-                        <div class="info-box zoomP">
-                            <span class="info-box-icon bg-info">
-                                <a href="{{ url('/admin/espacios') }}">
-                                    <img src="{{ url('/images/aparcamiento.gif') }}" width="100%" alt="">
-                                </a>
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">{{ $total_espacios }} Espacios Registrados</span>
-                                <span class="info-box-number" style="text-align: center;">{{ $total_espacios_libres }}
-                                    Libres |
-                                    {{ $total_espacios_ocupados }} Ocupados |
-                                    {{ $total_espacios_mantenimiento }} en Mantenimiento
+                    @can('admin.roles.index')
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="info-box zoomP">
+                                <span class="info-box-icon bg-info">
+                                    <a href="{{ url('/admin/roles') }}">
+                                        <img src="{{ url('/images/roles.gif') }}" width="100%" alt="">
+                                    </a>
                                 </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Roles Registrados</span>
+                                    <span class="info-box-number">{{ $total_roles }} Roles</span>
+                                </div>
+                                <!-- /.info-box-content -->
                             </div>
-                            <!-- /.info-box-content -->
+                            <!-- /.info-box -->
                         </div>
-                        <!-- /.info-box -->
-                    </div>
+                    @endcan
+
+                    @can('admin.usuarios.index')
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="info-box zoomP">
+                                <span class="info-box-icon bg-info">
+                                    <a href="{{ url('/admin/usuarios') }}">
+                                        <img src="{{ url('/images/usuario.gif') }}" width="100%" alt="">
+                                    </a>
+                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Usuarios Registrados</span>
+                                    <span class="info-box-number">{{ $total_usuarios }} Usuarios</span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                    @endcan
+
+                    @can('admin.espacios.index')
+                        <div class="col-md-6 col-sm-6 col-12">
+                            <div class="info-box zoomP">
+                                <span class="info-box-icon bg-info">
+                                    <a href="{{ url('/admin/espacios') }}">
+                                        <img src="{{ url('/images/aparcamiento.gif') }}" width="100%" alt="">
+                                    </a>
+                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">{{ $total_espacios }} Espacios Registrados</span>
+                                    <span class="info-box-number" style="text-align: center;">{{ $total_espacios_libres }}
+                                        Libres |
+                                        {{ $total_espacios_ocupados }} Ocupados |
+                                        {{ $total_espacios_mantenimiento }} en Mantenimiento
+                                    </span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                    @endcan
                 </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="info-box zoomP">
-                            <span class="info-box-icon bg-info">
-                                <a href="{{ url('/admin/tarifas') }}">
-                                    <img src="{{ url('/images/tarifas.gif') }}" width="100%" alt="">
-                                </a>
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Tarifas Registradas</span>
-                                <span class="info-box-number">{{ $total_tarifas }} Tarifas</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
 
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="info-box zoomP">
-                            <span class="info-box-icon bg-info">
-                                <a href="{{ url('/admin/clientes') }}">
-                                    <img src="{{ url('/images/cliente.gif') }}" width="100%" alt="">
-                                </a>
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Clientes Registrados</span>
-                                <span class="info-box-number">{{ $total_clientes }} Clientes</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="info-box zoomP">
-                            <span class="info-box-icon bg-info">
-                                <a href="{{ url('/admin/vehiculos') }}">
-                                    <img src="{{ url('/images/coche.gif') }}" width="100%" alt="">
-                                </a>
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Vehiculos Registrados</span>
-                                <span class="info-box-number">{{ $total_vehiculos }} Vehiculos</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="info-box zoomP">
-                            <span class="info-box-icon bg-info">
-                                <a href="{{ url('/admin/tickets') }}">
-                                    <img src="{{ url('/images/ticket.gif') }}" width="100%" alt="">
-                                </a>
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Tickets Activos</span>
-                                <span class="info-box-number">{{ $total_tickets_activos }} Tickets</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                </div>
 
                 <div class="row">
-                    <div class="col-md-3 col-6">
-                        <!-- small card -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>{{ $ajuste->divisa ?? '' . ' ' . $ingreso_hoy }}</h3>
-
-                                <p>Ingresos de Hoy</p>
+                    @can('admin.tarifas.index')
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="info-box zoomP">
+                                <span class="info-box-icon bg-info">
+                                    <a href="{{ url('/admin/tarifas') }}">
+                                        <img src="{{ url('/images/tarifas.gif') }}" width="100%" alt="">
+                                    </a>
+                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Tarifas Registradas</span>
+                                    <span class="info-box-number">{{ $total_tarifas }} Tarifas</span>
+                                </div>
+                                <!-- /.info-box-content -->
                             </div>
-                            <div class="icon">
-                                <i class="fas fa-money-bill-wave"></i>
-                            </div>
+                            <!-- /.info-box -->
                         </div>
-                    </div>
+                    @endcan
 
-                    <div class="col-md-3 col-6">
-                        <!-- small card -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>{{ $ajuste->divisa ?? '' . ' ' . $ingreso_ayer }}</h3>
-
-                                <p>Ingresos de Ayer</p>
+                    @can('admin.clientes.index')
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="info-box zoomP">
+                                <span class="info-box-icon bg-info">
+                                    <a href="{{ url('/admin/clientes') }}">
+                                        <img src="{{ url('/images/cliente.gif') }}" width="100%" alt="">
+                                    </a>
+                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Clientes Registrados</span>
+                                    <span class="info-box-number">{{ $total_clientes }} Clientes</span>
+                                </div>
+                                <!-- /.info-box-content -->
                             </div>
-                            <div class="icon">
-                                <i class="fas fa-money-bill-wave"></i>
-                            </div>
+                            <!-- /.info-box -->
                         </div>
-                    </div>
+                    @endcan
 
-                    <div class="col-md-3 col-6">
-                        <!-- small card -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{ $ajuste->divisa ?? '' . ' ' . $ingreso_esta_semana }}</h3>
-
-                                <p>Ingresos de esta Semana</p>
+                    @can('admin.vehiculos.index')
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="info-box zoomP">
+                                <span class="info-box-icon bg-info">
+                                    <a href="{{ url('/admin/vehiculos') }}">
+                                        <img src="{{ url('/images/coche.gif') }}" width="100%" alt="">
+                                    </a>
+                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Vehiculos Registrados</span>
+                                    <span class="info-box-number">{{ $total_vehiculos }} Vehiculos</span>
+                                </div>
+                                <!-- /.info-box-content -->
                             </div>
-                            <div class="icon">
-                                <i class="fas fa-calendar-day"></i>
-                            </div>
+                            <!-- /.info-box -->
                         </div>
-                    </div>
+                    @endcan
 
-                    <div class="col-md-3 col-6">
-                        <!-- small card -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{ $ajuste->divisa ?? '' . ' ' . $ingreso_semana_anterior }}</h3>
-
-                                <p>Ingresos de la Semana Anterior</p>
+                    @can('admin.tickets.index')
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="info-box zoomP">
+                                <span class="info-box-icon bg-info">
+                                    <a href="{{ url('/admin/tickets') }}">
+                                        <img src="{{ url('/images/ticket.gif') }}" width="100%" alt="">
+                                    </a>
+                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Tickets Activos</span>
+                                    <span class="info-box-number">{{ $total_tickets_activos }} Tickets</span>
+                                </div>
+                                <!-- /.info-box-content -->
                             </div>
-                            <div class="icon">
-                                <i class="fas fa-calendar-week"></i>
-                            </div>
+                            <!-- /.info-box -->
                         </div>
-                    </div>
+                    @endcan
                 </div>
-                <div class="row">
-                    <div class="col-md-3 col-6">
-                        <!-- small card -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>{{ $ajuste->divisa ?? '' . ' ' . $ingreso_este_mes }}</h3>
 
-                                <p>Ingresos de este Mes</p>
+                @can('admin.reportes.index')
+                    <div class="row">
+                        <div class="col-md-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>{{ ($ajuste->divisa ?? '') . ' ' . $ingreso_hoy }}</h3>
+
+                                    <p>Ingresos de Hoy</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
                             </div>
-                            <div class="icon">
-                                <i class="fas fa-chart-line"></i>
+                        </div>
+
+                        <div class="col-md-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>{{ ($ajuste->divisa ?? '') . ' ' . $ingreso_ayer }}</h3>
+
+                                    <p>Ingresos de Ayer</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>{{ ($ajuste->divisa ?? '') . ' ' . $ingreso_esta_semana }}</h3>
+
+                                    <p>Ingresos de esta Semana</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-calendar-day"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>{{ ($ajuste->divisa ?? '') . ' ' . $ingreso_semana_anterior }}</h3>
+
+                                    <p>Ingresos de la Semana Anterior</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-calendar-week"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>{{ ($ajuste->divisa ?? '') . ' ' . $ingreso_este_mes }}</h3>
 
-                    <div class="col-md-3 col-6">
-                        <!-- small card -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>{{ $ajuste->divisa ?? '' . ' ' . $ingreso_mes_anterior }}</h3>
-
-                                <p>Ingresos del Mes Anterior</p>
+                                    <p>Ingresos de este Mes</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
                             </div>
-                            <div class="icon">
-                                <i class="fas fa-chart-bar"></i>
+                        </div>
+
+                        <div class="col-md-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>{{ ($ajuste->divisa ?? '') . ' ' . $ingreso_mes_anterior }}</h3>
+
+                                    <p>Ingresos del Mes Anterior</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>{{ ($ajuste->divisa ?? '') . ' ' . $ingreso_total }}</h3>
+
+                                    <p>Ingreso Total en el Sistema</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6 col-6">
-                        <!-- small card -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>{{ $ajuste->divisa ?? '' . ' ' . $ingreso_total }}</h3>
-
-                                <p>Ingreso Total en el Sistema</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card card-outline card-info">
+                                <div class="card-header">
+                                    <h3 class="card-title"><b>Ingresos Mensuales</b></h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <canvas id="ingresosMensuales"></canvas>
+                                </div>
+                                <!-- /.card-body -->
                             </div>
-                            <div class="icon">
-                                <i class="fas fa-money-bill-wave"></i>
+                            <!-- /.card -->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card card-outline card-info">
+                                <div class="card-header">
+                                    <h3 class="card-title"><b>Estado de Seguimiento</b></h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <canvas id="estadoEspaciosPorTickets"></canvas>
+                                </div>
+                                <!-- /.card-body -->
                             </div>
+                            <!-- /.card -->
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card card-outline card-info">
-                            <div class="card-header">
-                                <h3 class="card-title"><b>Ingresos Mensuales</b></h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <canvas id="ingresosMensuales"></canvas>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card card-outline card-info">
-                            <div class="card-header">
-                                <h3 class="card-title"><b>Estado de Seguimiento</b></h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <canvas id="estadoEspaciosPorTickets"></canvas>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                </div>
+                @endcan
             </div>
             <div class="col-md-3">
                 <h1 id="reloj-hora" class="text-center font-weight-bold"></h1>
@@ -354,9 +372,9 @@
                 $ticket_activo = $tickets_activos->firstWhere('espacio_id', $espacio->id);
                 if ($ticket_activo) {
                     $ticketsOcupados++;
-                }elseif($espacio->estado == 'libre'){
+                } elseif ($espacio->estado == 'libre') {
                     $espaciosLibres++;
-                }else{
+                } else {
                     $espaciosMantenimiento++;
                 }
             @endphp

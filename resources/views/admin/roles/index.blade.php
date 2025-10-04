@@ -45,12 +45,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $contador = 1;
+                                        @endphp
                                         @foreach ($roles as $role)
-                                            <tr>
-                                                <td style="text-align: center">{{ $loop->iteration }}</td>
+                                        @if (!($role->name == 'SUPER-ADMIN'))
+                                             <tr>
+                                                <td style="text-align: center">{{ $contador++ }}</td>
                                                 <td>{{ $role->name }}</td>
                                                 <td class="d-flex justify-content-center">
-                                                    <a href="#" class="btn btn-warning btn-sm"><i
+                                                    <a href="{{ url('/admin/rol/'. $role->id.'/permisos') }}" class="btn btn-warning btn-sm"><i
                                                             class="fas fa-check"></i> Asisgnar Permisos</a>
                                                     <a href="{{ url('/admin/rol/' . $role->id . '/edit') }}"
                                                         class="btn btn-success btn-sm"><i class="fas fa-edit"></i>
@@ -85,6 +89,8 @@
                                                     </script>
                                                 </td>
                                             </tr>
+                                        @endif
+                                           
                                         @endforeach
                                     </tbody>
 
